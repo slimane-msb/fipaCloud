@@ -1,4 +1,9 @@
- .u-section-1 {
+.spaced-form .u-form-group {
+  margin-bottom: 15px; 
+}
+
+
+.u-section-1 {
   background-image: none;
 }
 

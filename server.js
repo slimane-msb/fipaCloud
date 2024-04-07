@@ -76,7 +76,7 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-  res.render('register.ejs', { name: whichUser(req) })
+  res.render('register.ejs', { page_name_ejs: "register" , name: whichUser(req) })
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
