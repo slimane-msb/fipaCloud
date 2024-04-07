@@ -47,9 +47,18 @@
                    <a class="u-button-style u-nav-link u-text-active-palette-1-light-3 u-text-hover-palette-1-light-2 u-text-palette-1-light-3" style="padding: 10px 20px;">Login</a>
                    <div class="u-nav-popup">
                       <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2">
-                         <li class="u-nav-item"><a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2" href="/profile" >UserName</a></li>
-                         <li class="u-nav-item"><a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2" href="/login" >Login</a></li>
-                         <li class="u-nav-item"><a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2" href="/register" >SignUP</a></li>
+                          <form action="/logout?_method=DELETE" method="POST">
+                           <li class="u-nav-item">
+                              <a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2" href="/login" >Login</a>
+                           </li>
+                           <li class="u-nav-item">
+                              <a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2" href="/register" >SignUP</a>
+                           </li>  
+                           <li class="u-nav-item">
+                              <!-- <a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2" type="submit" >Logout</a> -->
+                             <button type="submit" class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2">LogOut</button>
+                           </li>
+                         </form>                         
                       </ul>
                    </div>
                 </li>

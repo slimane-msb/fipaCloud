@@ -66,7 +66,7 @@ app.get('/mycloud', (req, res) => {
 // login pages
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
-  res.render('login.ejs')
+  res.render('login.ejs', { page_name_ejs: "login" })
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
