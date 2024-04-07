@@ -36,54 +36,37 @@ app.use(passport.session())
 app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
-  // res.render('index.ejs', { name: req.user.name })
-  let user_name;
-
-  if (req.isAuthenticated()) {
-    user_name = req.user.name;
-  } else {
-    user_name = "invite";
-  }
-
-  res.render('index.ejs', { page_name_ejs: "index", name: user_name });
+  res.render('index.ejs', { page_name_ejs: "index", name: whichUser(req) });
 })
 
 
 // static pages
 app.get('/home', (req, res) => {
-  let user_name;
-
-  if (req.isAuthenticated()) {
-    user_name = req.user.name;
-  } else {
-    user_name = "invite";
-  }
-
-  res.render('index.ejs', { page_name_ejs: "index", name: user_name });
+  res.render('index.ejs', { page_name_ejs: "index", name: whichUser(req) });
 });
 
 app.get('/services', (req, res) => {
-  res.render('Services.ejs', { page_name_ejs: "Services", name: req.user.name })
+  res.render('Services.ejs', { page_name_ejs: "Services", name: whichUser(req)  })
 })
 app.get('/about', (req, res) => {
-  res.render('About.ejs', { page_name_ejs: "About" , name: req.user.name})
+  res.render('About.ejs', { page_name_ejs: "About" , name: whichUser(req) })
 })
 app.get('/team', (req, res) => {
-  res.render('Equipes.ejs', { page_name_ejs: "Equipes", name: req.user.name })
+  res.render('Equipes.ejs', { page_name_ejs: "Equipes", name: whichUser(req)  })
 })
 app.get('/contact', (req, res) => {
-  res.render('Contact.ejs', { page_name_ejs: "Contact", name: req.user.name })
+  res.render('Contact.ejs', { page_name_ejs: "Contact", name: whichUser(req)  })
 })
 
 app.get('/mycloud', (req, res) => {
-  res.render('MyCloud.ejs', { page_name_ejs: "Services", name: req.user.name })
+  res.render('MyCloud.ejs', { page_name_ejs: "Services", name: whichUser(req)  })
 })
 
 
 // login pages
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
-  res.render('login.ejs', { page_name_ejs: "login" })
+  res.render('login.ejs', { page_name_ejs: "login" , name: whichUser(req) })
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -93,7 +76,7 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-  res.render('register.ejs')
+  res.render('register.ejs', { name: whichUser(req) })
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
@@ -129,6 +112,15 @@ function checkNotAuthenticated(req, res, next) {
     return res.redirect('/')
   }
   next()
+}
+
+function whichUser(req) {
+  if (req.isAuthenticated()) {
+    return  req.user.name;
+  } else {
+    return "invite";
+  }
+
 }
 
 app.listen(3000)
