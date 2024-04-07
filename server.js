@@ -37,29 +37,29 @@ app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   // res.render('index.ejs', { name: req.user.name })
-  res.render('index.ejs')
+  res.render('index.ejs', { page_name_ejs: "index" })
 })
 
 
 // static pages
 app.get('/home', (req, res) => {
-  res.render('index.ejs')
+  res.render('index.ejs', { page_name_ejs: "index" })
 })
 app.get('/services', (req, res) => {
-  res.render('Services.ejs')
+  res.render('Services.ejs', { page_name_ejs: "Services" })
 })
 app.get('/about', (req, res) => {
-  res.render('About.ejs')
+  res.render('About.ejs', { page_name_ejs: "About" })
 })
 app.get('/team', (req, res) => {
-  res.render('Equipes.ejs')
+  res.render('Equipes.ejs', { page_name_ejs: "Equipes" })
 })
 app.get('/contact', (req, res) => {
-  res.render('Contact.ejs')
+  res.render('Contact.ejs', { page_name_ejs: "Contact" })
 })
 
 app.get('/mycloud', (req, res) => {
-  res.render('MyCloud.ejs')
+  res.render('MyCloud.ejs', { page_name_ejs: "Services" })
 })
 
 
