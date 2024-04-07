@@ -22,11 +22,10 @@ initializePassport(
   passport,
   async (email) => {
     const users = await User.find();
-    console.log(users)
     return users.find(user => user.email === email);
   },
   async (id) => {
-    users = await User.find();
+    const users = await User.find();
     return users.find(user => user._id === id);
   }
 );
@@ -85,7 +84,13 @@ app.get('/contact', (req, res) => {
   res.render('Contact.ejs', { page_name_ejs: "Contact", name: whichUser(req)  })
 })
 
-app.get('/mycloud', (req, res) => {
+app.get('/mycloud', checkAuthenticated, (req, res) => {
+  res.render('MyCloud.ejs', { page_name_ejs: "MyCloud", name: whichUser(req)  })
+})
+
+
+// services pages
+app.get('/vscode',checkAuthenticated, (req, res) => {
   res.render('MyCloud.ejs', { page_name_ejs: "Services", name: whichUser(req)  })
 })
 
@@ -110,7 +115,6 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
     const user = new User({
-      id: Date.now().toString(),
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword
