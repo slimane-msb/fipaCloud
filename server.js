@@ -37,29 +37,46 @@ app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   // res.render('index.ejs', { name: req.user.name })
-  res.render('index.ejs', { page_name_ejs: "index" })
+  let user_name;
+
+  if (req.isAuthenticated()) {
+    user_name = req.user.name;
+  } else {
+    user_name = "invite";
+  }
+
+  res.render('index.ejs', { page_name_ejs: "index", name: user_name });
 })
 
 
 // static pages
 app.get('/home', (req, res) => {
-  res.render('index.ejs', { page_name_ejs: "index" })
-})
+  let user_name;
+
+  if (req.isAuthenticated()) {
+    user_name = req.user.name;
+  } else {
+    user_name = "invite";
+  }
+
+  res.render('index.ejs', { page_name_ejs: "index", name: user_name });
+});
+
 app.get('/services', (req, res) => {
-  res.render('Services.ejs', { page_name_ejs: "Services" })
+  res.render('Services.ejs', { page_name_ejs: "Services", name: req.user.name })
 })
 app.get('/about', (req, res) => {
-  res.render('About.ejs', { page_name_ejs: "About" })
+  res.render('About.ejs', { page_name_ejs: "About" , name: req.user.name})
 })
 app.get('/team', (req, res) => {
-  res.render('Equipes.ejs', { page_name_ejs: "Equipes" })
+  res.render('Equipes.ejs', { page_name_ejs: "Equipes", name: req.user.name })
 })
 app.get('/contact', (req, res) => {
-  res.render('Contact.ejs', { page_name_ejs: "Contact" })
+  res.render('Contact.ejs', { page_name_ejs: "Contact", name: req.user.name })
 })
 
 app.get('/mycloud', (req, res) => {
-  res.render('MyCloud.ejs', { page_name_ejs: "Services" })
+  res.render('MyCloud.ejs', { page_name_ejs: "Services", name: req.user.name })
 })
 
 
