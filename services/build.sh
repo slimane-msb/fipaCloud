@@ -14,7 +14,7 @@
   --restart unless-stopped \
   lscr.io/linuxserver/openvscode-server:latest
 
-  
+
 # gitlab
 requires 3GB RAM
 
@@ -37,3 +37,22 @@ docker run -d \
 
 # jupyter lab 
 docker run -p 10000:8888 quay.io/jupyter/scipy-notebook:2024-03-14
+
+
+# mongoDB
+sudo apt-get install gnupg curl
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+   --dearmor
+
+sudo apt-get install -y mongodb-org
+
+echo "mongodb-org hold" | sudo dpkg --set-selections
+echo "mongodb-org-database hold" | sudo dpkg --set-selections
+echo "mongodb-org-server hold" | sudo dpkg --set-selections
+echo "mongodb-mongosh hold" | sudo dpkg --set-selections
+echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
+echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+
+
+sudo systemctl start mongod
