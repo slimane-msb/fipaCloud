@@ -10,22 +10,31 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
-
+const User = require('./user')
 
 
 // incude static files 
 app.use(express.static('views'));
 
+// auth
 const initializePassport = require('./passport-config')
 initializePassport(
   passport,
-  email => users.find(user => user.email === email),
-  id => users.find(user => user.id === id)
-)
+  async (email) => {
+    const users = await User.find();
+    console.log(users)
+    return users.find(user => user.email === email);
+  },
+  async (id) => {
+    users = await User.find();
+    return users.find(user => user._id === id);
+  }
+);
 
+
+// end auth 
 
 // database
-const users = []
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 
 const db = mongoose.connection
@@ -38,12 +47,6 @@ app.use(express.json())
 const usersRouter = require('./routes')
 
 app.use('/users', usersRouter)
-
-
-
-
-
-
 
 // end database bloc 
 
@@ -106,12 +109,13 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 app.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    users.push({
+    const user = new User({
       id: Date.now().toString(),
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword
     })
+    const newUser = await user.save()
     res.redirect('/login')
   } catch {
     res.redirect('/register')
