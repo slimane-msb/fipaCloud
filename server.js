@@ -10,6 +10,10 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 
+
+// incude static files 
+app.use(express.static('views'));
+
 const initializePassport = require('./passport-config')
 initializePassport(
   passport,
@@ -31,9 +35,35 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 
-app.get('/', checkAuthenticated, (req, res) => {
-  res.render('index.ejs', { name: req.user.name })
+app.get('/', (req, res) => {
+  // res.render('index.ejs', { name: req.user.name })
+  res.render('index.ejs')
 })
+
+
+// static pages
+app.get('/home', (req, res) => {
+  res.render('index.ejs')
+})
+app.get('/services', (req, res) => {
+  res.render('Services.ejs')
+})
+app.get('/about', (req, res) => {
+  res.render('About.ejs')
+})
+app.get('/team', (req, res) => {
+  res.render('Equipes.ejs')
+})
+app.get('/contact', (req, res) => {
+  res.render('Contact.ejs')
+})
+
+app.get('/mycloud', (req, res) => {
+  res.render('MyCloud.ejs')
+})
+
+
+// login pages
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
   res.render('login.ejs')

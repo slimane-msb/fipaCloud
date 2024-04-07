@@ -5,27 +5,27 @@
         <lastmod>2024-04-06T22:11:29+02:00</lastmod>
     </url>
     <url>
-        <loc>fipacloud.eu/index.html</loc>
+        <loc>fipacloud.eu/index.ejs</loc>
         <lastmod>2024-04-06T22:11:29+02:00</lastmod>
     </url>
     <url>
-        <loc>fipacloud.eu/About.html</loc>
+        <loc>fipacloud.eu/About.ejs</loc>
         <lastmod>2024-04-07T12:23:16+02:00</lastmod>
     </url>
     <url>
-        <loc>fipacloud.eu/Contact.html</loc>
+        <loc>fipacloud.eu/Contact.ejs</loc>
         <lastmod>2024-04-06T22:40:32+02:00</lastmod>
     </url>
     <url>
-        <loc>fipacloud.eu/Services.html</loc>
+        <loc>fipacloud.eu/Services.ejs</loc>
         <lastmod>2024-04-06T22:40:07+02:00</lastmod>
     </url>
     <url>
-        <loc>fipacloud.eu/MyCloud.html</loc>
+        <loc>fipacloud.eu/MyCloud.ejs</loc>
         <lastmod>2024-04-06T22:55:06+02:00</lastmod>
     </url>
     <url>
-        <loc>fipacloud.eu/Equipes.html</loc>
+        <loc>fipacloud.eu/Equipes.ejs</loc>
         <lastmod>2024-04-06T22:40:48+02:00</lastmod>
     </url>
 </urlset>
