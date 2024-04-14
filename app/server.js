@@ -32,10 +32,16 @@ initializePassport(
 // end auth 
 
 // database
+uri = ''
+if(process.env.PRODUCTION==="true"){
+  const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
+  uri = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`;
+  
+}else{
+  uri = process.env.DATABASE_URL;
+}
 
-const uri = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`;
 
 console.log(uri)
 
@@ -79,7 +85,13 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/services', (req, res) => {
-  res.render('Services.ejs', { page_name_ejs: "Services", name: whichUser(req)  })
+  if(process.env.PRODUCTION==="true"){
+    ip_vscode = "docker ip address host "
+  }else{
+    ip_vscode = "localhost:3000"
+  }
+
+  res.render('Services.ejs', { page_name_ejs: "Services", name: whichUser(req), ip_vscode:ip_vscode })
 })
 app.get('/about', (req, res) => {
   res.render('About.ejs', { page_name_ejs: "About" , name: whichUser(req) })
