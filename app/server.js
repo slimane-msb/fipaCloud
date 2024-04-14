@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
+require('dotenv').config()
 
 const express = require('express')
 const app = express()
@@ -34,11 +32,18 @@ initializePassport(
 // end auth 
 
 // database
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 
-const db = mongoose.connection
-db.on('error', (error) => console.error(error))
-db.once('open', () => console.log('Connected to Database'))
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
+
+const uri = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`;
+
+mongoose.connect(uri, { useNewUrlParser: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+  });
 
 
 app.use(express.json())
