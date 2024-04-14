@@ -16,7 +16,7 @@
 
 
 # gitlab
-requires 3GB RAM
+# requires 3GB RAM
 
 # mattermost 
 docker run --name mattermost-preview -d --publish 8065:8065 mattermost/mattermost-preview
@@ -40,6 +40,7 @@ docker run -p 10000:8888 quay.io/jupyter/scipy-notebook:2024-03-14
 
 
 # mongoDB
+## installation 
 sudo apt-get install gnupg curl
 curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
    sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
@@ -54,5 +55,17 @@ echo "mongodb-mongosh hold" | sudo dpkg --set-selections
 echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
 echo "mongodb-org-tools hold" | sudo dpkg --set-selections
 
-
+## run session 
 sudo systemctl start mongod
+
+# APK
+npm install
+
+echo SESSION_SECRET=EnterYourSecret > ../.tmptenv
+echo DATABASE_URL=mongodb://EnterYourUrl:EnterYourPort/subscribers > ../.tmpenv
+
+npm run devStart
+
+open localhost::3030
+
+
