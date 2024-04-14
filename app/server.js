@@ -112,24 +112,14 @@ app.get('/mycloud', checkAuthenticated, (req, res) => {
 app.get('/vscode',checkAuthenticated, (req, res) => {
   if(process.env.PRODUCTION==="true"){
     console.log("ip_vscode (PRODUCTIN) = http://vscode-production:3000/")
-    ip_vscode = "http://vscode-production:3000/"
+    ip_vscode = process.env.SUB_DOMAIN + process.env.VSCODE_LOCAL_PORT + process.env.DOMAIN
   }else{
-    console.log("ip_vscode (DEV) = http://vscode-dev:3000")
+    console.log("ip_vscode (DEV) = http://localhost:3000")
     ip_vscode = "http://vscode-dev:3000/"
   }
   res.redirect(ip_vscode)
 })
 
-app.get('/gitlab',checkAuthenticated, (req, res) => {
-  if(process.env.PRODUCTION==="true"){
-    console.log("ip_gitlab (PRODUCTIN) = http://gitlab-production:3000/")
-    ip_gitlab = "http://gitlab-production:3000/"
-  }else{
-    console.log("ip_gitlab (DEV) = http://gitlab-dev:3000")
-    ip_gitlab = "http://gitlab-dev:3000/"
-  }
-  res.redirect(ip_gitlab)
-})
 
 
 // login pages

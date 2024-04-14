@@ -20,9 +20,9 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - /path/to/appdata/config:/config
+      - vscode/config:/config
     ports:
-      - 3000:3000
+      - $VSCODE_LOCAL_PORT:$VSCODE_DOCKER_PORT
     restart: unless-stopped
   app:
     depends_on:
