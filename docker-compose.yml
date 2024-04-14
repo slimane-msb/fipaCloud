@@ -20,7 +20,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - vscode/config:/config
+      - vscode:/config
     ports:
       - $VSCODE_LOCAL_PORT:$VSCODE_DOCKER_PORT
     restart: unless-stopped
@@ -43,3 +43,4 @@ services:
 
 volumes:
   db:
+  vscode:
