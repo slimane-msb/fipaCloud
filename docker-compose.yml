@@ -12,6 +12,18 @@ services:
       - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
     volumes:
       - db:/data/db
+  openvscode-server:
+    image: lscr.io/linuxserver/openvscode-server:latest
+    container_name: openvscode-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /path/to/appdata/config:/config
+    ports:
+      - 3000:3000
+    restart: unless-stopped
   app:
     depends_on:
       - mongodb
@@ -28,19 +40,6 @@ services:
       - DB_PORT=$MONGODB_DOCKER_PORT
     stdin_open: true
     tty: true
-  openvscode-server:
-    image: lscr.io/linuxserver/openvscode-server:latest
-    container_name: openvscode-server
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-    volumes:
-      - /path/to/appdata/config:/config
-    ports:
-      - 3000:3000
-    restart: unless-stopped
-
 
 volumes:
   db:

@@ -86,9 +86,11 @@ app.get('/home', (req, res) => {
 
 app.get('/services', (req, res) => {
   if(process.env.PRODUCTION==="true"){
-    ip_vscode = "docker ip address host "
+    console.log("ip_vscode (PRODUCTIN) = http://localhost:3000/")
+    ip_vscode = "http://production:3000/"
   }else{
-    ip_vscode = "localhost:3000"
+    console.log("ip_vscode (DEV) = http://localhost:3000")
+    ip_vscode = "http://dev:3000/"
   }
 
   res.render('Services.ejs', { page_name_ejs: "Services", name: whichUser(req), ip_vscode:ip_vscode })
