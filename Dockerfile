@@ -8,8 +8,20 @@ RUN npm install
 
 COPY . .
 
-ENV PORT=8080
+USER 0
 
-EXPOSE 8080
+# APK
+RUN npm install
 
-CMD [ "npm", "start" ]
+RUN echo SESSION_SECRET=EnterYourSecret > ../.tmptenv
+RUN echo DATABASE_URL=mongodb://EnterYourUrl:EnterYourPort/subscribers > ../.tmpenv
+
+ENV PORT=4000
+
+USER 1001
+
+EXPOSE 4000
+
+CMD ["npm", "start"] 
+
+
