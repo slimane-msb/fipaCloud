@@ -45,13 +45,19 @@ if(process.env.PRODUCTION==="true"){
 
 console.log(uri)
 
-mongoose.connect(uri, { useNewUrlParser: true })
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
-  });
+function connectToMongoDB() {
+  mongoose.connect(uri, { useNewUrlParser: true })
+    .then(() => {
+      console.log('[success] Connected to MongoDB');
+    })
+    .catch((error) => {
+      console.log('[Error] Did not Connect to MongoDB');
+      console.error('Error connecting to MongoDB:', error);
+      setTimeout(connectToMongoDB, 5000); // try after 5sec (because docker compose build in parallel)
+    });
+}
+
+connectToMongoDB();
 
 
 app.use(express.json())
@@ -85,15 +91,7 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/services', (req, res) => {
-  if(process.env.PRODUCTION==="true"){
-    console.log("ip_vscode (PRODUCTIN) = http://localhost:3000/")
-    ip_vscode = "http://production:3000/"
-  }else{
-    console.log("ip_vscode (DEV) = http://localhost:3000")
-    ip_vscode = "http://dev:3000/"
-  }
-
-  res.render('Services.ejs', { page_name_ejs: "Services", name: whichUser(req), ip_vscode:ip_vscode })
+  res.render('Services.ejs', { page_name_ejs: "Services", name: whichUser(req) })
 })
 app.get('/about', (req, res) => {
   res.render('About.ejs', { page_name_ejs: "About" , name: whichUser(req) })
@@ -106,13 +104,31 @@ app.get('/contact', (req, res) => {
 })
 
 app.get('/mycloud', checkAuthenticated, (req, res) => {
-  res.render('MyCloud.ejs', { page_name_ejs: "MyCloud", name: whichUser(req)  })
+  res.render('MyCloud.ejs', { page_name_ejs: "Services", name: whichUser(req)  })
 })
 
 
 // services pages
 app.get('/vscode',checkAuthenticated, (req, res) => {
-  res.render('MyCloud.ejs', { page_name_ejs: "Services", name: whichUser(req)  })
+  if(process.env.PRODUCTION==="true"){
+    console.log("ip_vscode (PRODUCTIN) = http://vscode-production:3000/")
+    ip_vscode = "http://vscode-production:3000/"
+  }else{
+    console.log("ip_vscode (DEV) = http://vscode-dev:3000")
+    ip_vscode = "http://vscode-dev:3000/"
+  }
+  res.redirect(ip_vscode)
+})
+
+app.get('/gitlab',checkAuthenticated, (req, res) => {
+  if(process.env.PRODUCTION==="true"){
+    console.log("ip_gitlab (PRODUCTIN) = http://gitlab-production:3000/")
+    ip_gitlab = "http://gitlab-production:3000/"
+  }else{
+    console.log("ip_gitlab (DEV) = http://gitlab-dev:3000")
+    ip_gitlab = "http://gitlab-dev:3000/"
+  }
+  res.redirect(ip_gitlab)
 })
 
 
