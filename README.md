@@ -22,7 +22,7 @@ SESSION_SECRET=secret
 DATABASE_URL=mongodb://127.0.0.1:27017/subscribers
 ```
 
-# start app
+# start app : 
 - run `docker compose up`
 
 # To test in local host : 
