@@ -146,8 +146,11 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword
     })
+    // verify duplicates 
     const newUser = await user.save()
     res.redirect('/login')
+    // login the user first 
+    // redirect to services 
   } catch {
     res.redirect('/register')
   }

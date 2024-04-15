@@ -61,9 +61,6 @@ sudo systemctl start mongod
 # APK
 npm install
 
-echo SESSION_SECRET=EnterYourSecret > ../.tmptenv
-echo DATABASE_URL=mongodb://EnterYourUrl:EnterYourPort/subscribers > ../.tmpenv
-
 npm run devStart
 
 open localhost::3030
