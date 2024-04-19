@@ -91,24 +91,21 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/services', (req, res) => {
-  res.render('Services.ejs', { page_name_ejs: "Services", name: whichUser(req) })
+  res.render('service.ejs', { page_name_ejs: "Services", name: whichUser(req) })
 })
 app.get('/about', (req, res) => {
-  res.render('About.ejs', { page_name_ejs: "About" , name: whichUser(req) })
+  res.render('about.ejs', { page_name_ejs: "About" , name: whichUser(req) })
 })
 app.get('/team', (req, res) => {
   res.render('Equipes.ejs', { page_name_ejs: "Equipes", name: whichUser(req)  })
 })
 app.get('/contact', (req, res) => {
-  res.render('Contact.ejs', { page_name_ejs: "Contact", name: whichUser(req)  })
-})
-
-app.get('/mycloud', checkAuthenticated, (req, res) => {
-  res.render('MyCloud.ejs', { page_name_ejs: "Services", name: whichUser(req)  })
+  res.render('contact.ejs', { page_name_ejs: "Contact", name: whichUser(req)  })
 })
 
 
 // services pages
+/*
 app.get('/vscode',checkAuthenticated, (req, res) => {
   if(process.env.PRODUCTION==="true"){
     console.log("ip_vscode (PRODUCTIN) = " + process.env.SUB_DOMAIN + process.env.VSCODE_LOCAL_PORT + process.env.DOMAIN)
@@ -118,7 +115,11 @@ app.get('/vscode',checkAuthenticated, (req, res) => {
     ip_vscode = "http://localhost:3000/"
   }
   res.redirect(ip_vscode)
-})
+})*/
+/*
+app.get('/mycloud', checkAuthenticated, (req, res) => {
+  res.render('MyCloud.ejs', { page_name_ejs: "Services", name: whichUser(req)  })
+})*/
 
 
 

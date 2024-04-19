@@ -1,99 +1,48 @@
-<header class="u-align-center-sm u-align-center-xs u-black u-clearfix u-header u-header" id="sec-a184">
-    <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-sheet-1">
-       <a href="/home" class="u-image u-logo u-image-1" data-image-width="256" data-image-height="256" title="Accueil">
-       <img src="images/eagle.png" class="u-logo-image u-logo-image-1">
-       </a>
-       <nav class="u-align-left u-menu u-menu-hamburger u-offcanvas u-menu-1">
-          <div class="menu-collapse" style="font-size: 1rem;">
-             <a class="u-button-style u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-nav-link" href="#">
-                <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 302 302" style="">
-                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8a8f"></use>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-8a8f" x="0px" y="0px" viewBox="0 0 302 302" style="enable-background:new 0 0 302 302;" xml:space="preserve" class="u-svg-content">
-                   <g>
-                      <rect y="36" width="302" height="30"></rect>
-                      <rect y="236" width="302" height="30"></rect>
-                      <rect y="136" width="302" height="30"></rect>
-                   </g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                   <g></g>
-                </svg>
-             </a>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="/home">
+            <span>Hostit</span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ml-auto">
+              <li class="nav-item ">
+                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about"> About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/service">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/price">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+            </ul>
+            <div class="quote_btn-container">
+              <form class="form-inline">
+                <button class="btn   nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  COUCOU ICI IL Y AURA LE PFP
+                </span>
+              </a>
+            </div>
           </div>
-          <div class="u-custom-menu u-nav-container">
-             <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
-                <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-light-3 u-text-hover-palette-1-light-2 u-text-palette-1-light-3" href="/home" style="padding: 10px 20px;">Home</a></li>
-                <li class="u-nav-item">
-                   <a class="u-button-style u-nav-link u-text-active-palette-1-light-3 u-text-hover-palette-1-light-2 u-text-palette-1-light-3" href="/services" style="padding: 10px 20px;">Services</a>
-                   <!-- </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-light-3 u-text-hover-palette-1-light-2 u-text-palette-1-light-3" href="/mycloud" style="padding: 10px 20px;">MyCloud</a> -->
-                </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-light-3 u-text-hover-palette-1-light-2 u-text-palette-1-light-3" href="/about" style="padding: 10px 20px;">About</a></li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-light-3 u-text-hover-palette-1-light-2 u-text-palette-1-light-3" href="/team" style="padding: 10px 20px;">Team</a></li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-light-3 u-text-hover-palette-1-light-2 u-text-palette-1-light-3" href="/contact" style="padding: 10px 20px;">Contact</a></li>
-                <li class="u-nav-item">
-                   <a class="u-button-style u-nav-link u-text-active-palette-1-light-3 u-text-hover-palette-1-light-2 u-text-palette-1-light-3" style="padding: 10px 20px;">Login</a>
-                   <div class="u-nav-popup">
-                      <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2">
-                          <form action="/logout?_method=DELETE" method="POST">
-                           <li class="u-nav-item">
-                              <a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2" href="/profile" > <%= name %> </a>
-                           </li>
-                           <li class="u-nav-item">
-                              <a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2" href="/login" >Login</a>
-                           </li>
-                           <li class="u-nav-item">
-                              <a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2" href="/register" >SignUP</a>
-                           </li>  
-                           <li class="u-nav-item">
-                              <!-- <a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2" type="submit" >Logout</a> -->
-                             <button type="submit" class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2">LogOut</button>
-                           </li>
-                         </form>                         
-                      </ul>
-                   </div>
-                </li>
-             </ul>
-          </div>
-          <div class="u-custom-menu u-nav-container-collapse">
-             <div class="u-align-center u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-                <div class="u-inner-container-layout u-sidenav-overflow">
-                   <div class="u-menu-close"></div>
-                   <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/home">Accueil</a></li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/services">Services</a></li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/mycloud">MyCloud</a></li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/about">About</a></li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/team">Equipes</a></li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/contact">Contact</a></li>
-                      <li class="u-nav-item">
-                         <a class="u-button-style u-nav-link">Login</a>
-                         <div class="u-nav-popup">
-                            <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-4">
-                               <li class="u-nav-item"><a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2">UserName</a></li>
-                               <li class="u-nav-item"><a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2">Login</a></li>
-                               <li class="u-nav-item"><a class="u-button-style u-custom-color-9 u-hover-custom-color-5 u-nav-link u-text-hover-palette-1-light-2">SignUP</a></li>
-                            </ul>
-                         </div>
-                      </li>
-                   </ul>
-                </div>
-             </div>
-             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-          </div>
-       </nav>
-       <img class="u-image u-image-circle u-image-2" src="images/45ec38726ce717479607de8ee08852fd120e2b1ed37f513a154b3d6a6b6fbd1bf9e832061ed9a0e10d0e0e738646dd041b0785dc668051a71bf074_1280.jpg" alt="" data-image-width="1280" data-image-height="853" data-href="/home">
-    </div>
- </header>
+        </nav>
+      </div>
+</header>
+<!-- end header section -->
