@@ -28,4 +28,7 @@
         <loc>fipacloud.eu/Equipes.ejs</loc>
         <lastmod>2024-04-06T22:40:48+02:00</lastmod>
     </url>
+    <url>
+        <loc>fipacloud.eu/profile.ejs</loc>
+    </url>
 </urlset>

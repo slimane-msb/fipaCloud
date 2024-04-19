@@ -106,6 +106,9 @@ app.get('/contact', (req, res) => {
 app.get('/mycloud', checkAuthenticated, (req, res) => {
   res.render('MyCloud.ejs', { page_name_ejs: "Services", name: whichUser(req)  })
 })
+app.get('/profile', checkAuthenticated, (req, res) => {
+  res.render('Profile.ejs', { page_name_ejs: "Profile", name: whichUser(req)  })
+})
 
 
 // services pages
