@@ -1,4 +1,4 @@
-docker stop $( docker ps -a --quiet --filter "name=fipacloudwebsite")
-docker rm -f $( docker ps -a --quiet --filter "name=fipacloudwebsite")
-docker rmi fipacloudwebsite-app
+docker stop $( docker ps -a --quiet --filter "name=fipacloud")
+docker rm -f $( docker ps -a --quiet --filter "name=fipacloud")
+docker rmi fipacloud-app
 docker compose up
