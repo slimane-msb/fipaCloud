@@ -97,7 +97,7 @@ app.get('/about', (req, res) => {
   res.render('about.ejs', { page_name_ejs: "About" , name: whichUser(req) })
 })
 app.get('/team', (req, res) => {
-  res.render('Equipes.ejs', { page_name_ejs: "Equipes", name: whichUser(req)  })
+  res.render('team.ejs', { page_name_ejs: "Equipes", name: whichUser(req)  })
 })
 app.get('/contact', (req, res) => {
   res.render('contact.ejs', { page_name_ejs: "Contact", name: whichUser(req)  })
