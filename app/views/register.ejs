@@ -23,8 +23,8 @@
                         <form action="/register" method="post">
                             <input id="name" name="name" type="text" placeholder="Name" required />
                             <input id="email" name="email" type="email" placeholder="Email" required />
-                            <input id="password" name="password" type="password" placeholder="Password" onchange="validate()" required />
-                            <input id="password_check" type="password" placeholder="Confirm password" onchanger="validate()" required/>
+                            <input id="password" name="password" type="password" placeholder="Password" onkeyup="validate()" required />
+                            <input id="password_check" type="password" placeholder="Confirm password" onkeyup="validate()" required/>
                             <p id="alert_message"></p>
                             <input class="login_button" type="submit" value="Login" style="display: none;" />
                             <div class="btn_box" >
