@@ -105,7 +105,6 @@ app.get('/contact', (req, res) => {
 
 
 // services pages
-/*
 app.get('/vscode',checkAuthenticated, (req, res) => {
   if(process.env.PRODUCTION==="true"){
     console.log("ip_vscode (PRODUCTIN) = " + process.env.SUB_DOMAIN + process.env.VSCODE_LOCAL_PORT + process.env.DOMAIN)
@@ -115,7 +114,7 @@ app.get('/vscode',checkAuthenticated, (req, res) => {
     ip_vscode = "http://localhost:3000/"
   }
   res.redirect(ip_vscode)
-})*/
+})
 /*
 app.get('/mycloud', checkAuthenticated, (req, res) => {
   res.render('MyCloud.ejs', { page_name_ejs: "Services", name: whichUser(req)  })
