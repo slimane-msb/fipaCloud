@@ -143,6 +143,22 @@ a:focus {
   text-align: center;
   text-transform: uppercase;
 }
+.custom_nav-container .nav-item img {
+  height: 50px;
+  width: 50px;
+  padding: 0%;
+  margin: 0%;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: inline ;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 
 .custom_nav-container .nav_search-btn {
   width: 35px;
@@ -817,11 +833,11 @@ a:focus {
   position: relative;
 }
 
-.contact_section .heading_container {
+.heading_container {
   margin-bottom: 45px;
 }
 
-.contact_section .form_container input {
+.form_container input {
   width: 100%;
   border: 1px solid #b0b0b0;
   height: 50px;
@@ -832,27 +848,27 @@ a:focus {
   color: #101010;
 }
 
-.contact_section .form_container input::-webkit-input-placeholder {
+.form_container input::-webkit-input-placeholder {
   color: #b0b0b0;
 }
 
-.contact_section .form_container input:-ms-input-placeholder {
+.form_container input:-ms-input-placeholder {
   color: #b0b0b0;
 }
 
-.contact_section .form_container input::-ms-input-placeholder {
+.form_container input::-ms-input-placeholder {
   color: #b0b0b0;
 }
 
-.contact_section .form_container input::placeholder {
+.form_container input::placeholder {
   color: #b0b0b0;
 }
 
-.contact_section .form_container input.message-box {
+.form_container input.message-box {
   height: 120px;
 }
 
-.contact_section .form_container .btn_box {
+.form_container .btn_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -861,7 +877,7 @@ a:focus {
           justify-content: center;
 }
 
-.contact_section .form_container button {
+.form_container button {
   border: none;
   text-transform: uppercase;
   display: inline-block;
@@ -875,7 +891,7 @@ a:focus {
   font-weight: bold;
 }
 
-.contact_section .form_container button:hover {
+.form_container button:hover {
   background-color: transparent;
   color: #ff4646;
 }

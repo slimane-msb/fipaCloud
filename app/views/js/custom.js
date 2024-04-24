@@ -44,3 +44,12 @@ $('.team_carousel').owlCarousel({
         }
     }
 })
+
+//validate password
+function validate() {
+    var x= document.getElementById("password");
+    var y= document.getElementById("password_check");
+    var alert = document.getElementById("alert_message")
+    if(x.value==y.value) alert.innerHTML= "";
+    else alert.innerHTML = "Warning, passwords are not the same";
+    }
