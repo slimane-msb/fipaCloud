@@ -147,8 +147,23 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
       password: hashedPassword
     })
     // verify duplicates 
-    const newUser = await user.save()
-    res.redirect('/login')
+    const existingUser = await User.findOne({ email: req.body.email });
+    if(existingUser){
+      console.log("user exists")
+      req.flash('error', 'Email already exists');
+      return res.redirect('/login');
+    }else{
+      const newUser = await user.save()
+      req.login(newUser, (err) => {
+        if (err) {
+          console.error(err);
+          req.flash('error', 'An error occurred during login');
+          return res.redirect('/login');
+        }
+        res.redirect('/services'); 
+      });
+      res.redirect('/login')
+    }
     // login the user first 
     // redirect to services 
   } catch {
@@ -171,7 +186,12 @@ function checkAuthenticated(req, res, next) {
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return res.redirect('/')
+    req.logout(err => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/login');
+    });
   }
   next()
 }
@@ -180,7 +200,7 @@ function whichUser(req) {
   if (req.isAuthenticated()) {
     return  req.user.name;
   } else {
-    return "invite";
+    return "Login";
   }
 
 }

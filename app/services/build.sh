@@ -1,3 +1,15 @@
+# FIleCLoud
+# docker run -d \
+#     --name filebrowser \
+#     --user $(id -u):$(id -g) \
+#     -p 8080:8080 \
+#     -v ./data:/data \
+#     -e FB_BASEURL=/filebrowser \
+#     hurlenko/filebrowser
+
+# Next cloud 
+docker run -d -p 8080:80 nextcloud
+
 
 # vscode
  docker run -d \
@@ -25,14 +37,8 @@ docker run --name mattermost-preview -d --publish 8065:8065 mattermost/mattermos
 docker run -it -p 80:8000 mattermost/focalboard
 
 
-# FIleCLoud
-docker run -d \
-    --name filebrowser \
-    --user $(id -u):$(id -g) \
-    -p 8080:8080 \
-    -v ./data:/data \
-    -e FB_BASEURL=/filebrowser \
-    hurlenko/filebrowser
+
+
 
 
 # jupyter lab 

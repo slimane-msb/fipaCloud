@@ -1,5 +1,14 @@
 // © 2024 Nicepage
 
+function logout(event) {
+    event.preventDefault();
+    fetch('/logout', { method: 'DELETE' })
+      .then(data => {
+        window.location.reload();
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
 ! function(t) {
     function e(i) {
         if (n[i]) return n[i].exports;
