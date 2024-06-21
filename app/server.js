@@ -1,6 +1,8 @@
 require('dotenv').config()
 
 const express = require('express')
+const { Client, Server } = require('nextcloud-node-client');
+
 const app = express()
 const bcrypt = require('bcrypt')
 const passport = require('passport')
@@ -129,7 +131,7 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/services',
   failureRedirect: '/login',
   failureFlash: true
 }))
@@ -153,16 +155,35 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
       req.flash('error', 'Email already exists');
       return res.redirect('/login');
     }else{
-      const newUser = await user.save()
-      req.login(newUser, (err) => {
-        if (err) {
-          console.error(err);
-          req.flash('error', 'An error occurred during login');
-          return res.redirect('/login');
-        }
-        res.redirect('/services'); 
-      });
-      res.redirect('/login')
+
+      
+      try {
+        // 1. nextCloud
+        await createUser(
+          userid = req.body.name,
+          email = req.body.email,
+          password = req.body.password
+        );
+        console.log('User created successfully in nextCloud');
+        // 2. main app
+        const newUser = await user.save()
+        console.log("User created successfully in main APP:", user);  
+
+        req.login(newUser, (err) => {
+          if (err) {
+            console.error(err);
+            req.flash('error', 'User created successfully | An error occurred during login');
+            return res.redirect('/login');
+          }
+          res.redirect('/services'); 
+        });
+        res.redirect('/login')
+      } catch (error) {
+        console.log(error.message)
+        req.flash('error', error.message);
+        return res.redirect('/register');
+      }
+
     }
     // login the user first 
     // redirect to services 
@@ -205,6 +226,25 @@ function whichUser(req) {
 
 }
 
+
+
+async function createUser(userid,email,password) {
+      const client = new Client();
+
+      const user = await client.createUser({
+          id: userid,       
+          email: email, 
+          password: password
+      });
+
+      await user.setDisplayName(userid);
+      await user.setQuota("100 MB");
+      await user.setLanguage("en");
+
+      const group = await client.getUserGroup("students");
+      await user.addToMemberUserGroup(group);
+
+}
 
 
 console.log(`Listening on >>>> http://localhost:4000`);

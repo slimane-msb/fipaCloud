@@ -15,11 +15,11 @@
             <div class="u-form u-form-1">
 
 
-              <h6 class="u-text u-text-default u-text-1">
-                <% if (messages.error) { %>
+               <p class="u-form-send-error u-form-send-message"> 
+                  <% if (messages.error) { %>
                   <%= messages.error %>
                 <% } %>
-              </h2>
+                  </p>
               
               <form action="/register" method="POST"  class="spaced-form">
 
