@@ -92,7 +92,7 @@ app.get('/home', (req, res) => {
   res.render('index.ejs', { page_name_ejs: "index", name: whichUser(req) });
 });
 
-app.get('/services', (req, res) => {
+app.get('/services',checkAuthenticated, (req, res) => {
   res.render('Services.ejs', { page_name_ejs: "Services", name: whichUser(req) })
 })
 app.get('/about', (req, res) => {
